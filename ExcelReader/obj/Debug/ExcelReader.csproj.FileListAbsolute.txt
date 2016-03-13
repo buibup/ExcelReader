@@ -1,0 +1,11 @@
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.Form1.resources
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.Properties.Resources.resources
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csproj.GenerateResource.Cache
+D:\Dev\2016\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe.config
+D:\Dev\2016\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe
+D:\Dev\2016\ExcelReader\ExcelReader\bin\Debug\ExcelReader.pdb
+D:\Dev\2016\ExcelReader\ExcelReader\bin\Debug\Excel.dll
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.exe
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.pdb
+D:\Dev\2016\ExcelReader\ExcelReader\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Dev\2016\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csprojResolveAssemblyReference.cache
