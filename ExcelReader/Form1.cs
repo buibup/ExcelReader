@@ -26,7 +26,7 @@ namespace ExcelReader
         string dateFrom;
         string dateTo;
         private DataSet ds;
-        private string strCon = ConfigurationManager.ConnectionStrings["Con"].ToString();
+
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace ExcelReader
             if (result == DialogResult.OK)
             {
                 textBox1.Text = openFileDialog1.FileName;
+                button2.Enabled = true;
             }
         }
 
@@ -67,7 +68,11 @@ namespace ExcelReader
                 sheetCombo.DataSource = tablenames;
 
                 if (tablenames.Count > 0)
+                {
                     sheetCombo.SelectedIndex = 0;
+                    button3.Enabled = true;
+                }
+
 
                 //dataGridView1.DataSource = ds;
                 //dataGridView1.DataMember
@@ -109,29 +114,29 @@ namespace ExcelReader
             {
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    using (SqlConnection con = new SqlConnection(strCon))
+                    using (SqlConnection con = new SqlConnection(GlobalVar.con))
                     {
-                        strQuery = @"Insert Into ORStaff Values(@StaffDate, @RN, @NA, @Hour)";
-                        using (SqlCommand cmd = new SqlCommand(strQuery,con))
+                        strQuery = @"Insert Into " + GlobalVar.staffTB + " Values(" + GlobalVar.insertedStaff + ")";
+                        using (SqlCommand cmd = new SqlCommand(strQuery, con))
                         {
-                      
+
                             cmd.Parameters.AddWithValue("@StaffDate", row.Cells["StaffDate"].Value);
                             cmd.Parameters.AddWithValue("@RN", row.Cells["RN"].Value);
                             cmd.Parameters.AddWithValue("@NA", row.Cells["NA"].Value);
                             cmd.Parameters.AddWithValue("@Hour", row.Cells["Hour"].Value);
                             con.Open();
                             cmd.ExecuteNonQuery();
-                            
+
                         }
                     }
                 }
-                MessageBox.Show("Save data success.");
+                MessageBox.Show("Save data to database successed.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error : " + ex.ToString());
             }
-            
+
         }
         private DataTable GetDataToDT(string cmdStr, string conStr)
         {
@@ -160,12 +165,12 @@ namespace ExcelReader
             return rDt;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void LoadData()
         {
-            dateFrom = dateTimePicker1.Value.Date.ToString("dd/MM/yyyy");
-            dateTo = dateTimePicker2.Value.Date.ToString("dd/MM/yyyy");
-            string sql = "SELECT [Id],[StaffDate],[RN],[NA],[Hour] FROM ORStaff WHERE Convert(varchar(10),StaffDate,103) >= '"+ dateFrom + "' and Convert(varchar(10),StaffDate,103) <= '" + dateTo + "' ";
-            SqlConnection connection = new SqlConnection(strCon);
+            dateFrom = dateTimePicker1.Value.Date.ToString(GlobalVar.dateFormate);
+            dateTo = dateTimePicker2.Value.Date.ToString(GlobalVar.dateFormate);
+            string sql = "SELECT " + GlobalVar.seletedStaff + " FROM ORStaff WHERE " + GlobalVar.convertStaffDate + " >= '" + dateFrom + "' and " + GlobalVar.convertStaffDate + " <= '" + dateTo + "' order by StaffDate ";
+            SqlConnection connection = new SqlConnection(GlobalVar.con);
             connection.Open();
             cmd = new SqlCommand(sql, connection);
             adp = new SqlDataAdapter(cmd);
@@ -178,12 +183,25 @@ namespace ExcelReader
             dataGridView1.ReadOnly = true;
             save_btn.Enabled = false;
             new_btn.Enabled = false;
+            this.dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            if (dataGridView1.Rows.Count > 0)
+            {
+                delete_btn.Enabled = true;
+                new_btn.Enabled = true;
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void save_btn_Click(object sender, EventArgs e)
         {
             adp.Update(sDt);
+            MessageBox.Show("Save Data successed.");
         }
 
         private void new_btn_Click(object sender, EventArgs e)
@@ -196,13 +214,55 @@ namespace ExcelReader
 
         private void delete_btn_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Do you want to delete all row ?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Do you want to delete data from gridview ?", "Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 //dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);
-                dataGridView1.Rows.Clear();
-                dataGridView1.Refresh();
-                adp.Update(sDt);
+                //adp.Update(sDt);
+                string strCmd = "delete " + GlobalVar.staffTB + " Where " + GlobalVar.convertStaffDate + " >= '" + dateFrom + "' and " + GlobalVar.convertStaffDate + " <= '" + dateTo + "' ";
+                if (executeQuery(strCmd))
+                {
+                    LoadData();
+                    MessageBox.Show("Delete data successed.");
+
+                }
             }
         }
+
+        void LoadEnableButton()
+        {
+            delete_btn.Enabled = false;
+            button2.Enabled = false;
+            new_btn.Enabled = false;
+            save_btn.Enabled = false;
+            button3.Enabled = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            LoadEnableButton();
+        }
+
+        private bool executeQuery(string strCmd)
+        {
+            bool status = false;
+            try
+            {
+                using (SqlConnection con = new SqlConnection(GlobalVar.con))
+                {
+                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(strCmd, con))
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                status = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
+            return status;
+        }
+
     }
 }

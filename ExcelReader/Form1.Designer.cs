@@ -44,8 +44,12 @@
             this.save_btn = new System.Windows.Forms.Button();
             this.new_btn = new System.Windows.Forms.Button();
             this.delete_btn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // firstRowNamesCheckBox
@@ -96,7 +100,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(306, 74);
+            this.button2.Location = new System.Drawing.Point(245, 69);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(81, 19);
@@ -118,9 +122,9 @@
             this.button1.Location = new System.Drawing.Point(394, 42);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 19);
+            this.button1.Size = new System.Drawing.Size(81, 20);
             this.button1.TabIndex = 7;
-            this.button1.Text = "select file";
+            this.button1.Text = "Select file";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -135,7 +139,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(708, 112);
+            this.button3.Location = new System.Drawing.Point(245, 99);
             this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(81, 21);
@@ -146,7 +150,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(606, 112);
+            this.button4.Location = new System.Drawing.Point(135, 68);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(81, 21);
@@ -157,21 +161,21 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(606, 43);
+            this.dateTimePicker1.Location = new System.Drawing.Point(497, 23);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 16;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(606, 76);
+            this.dateTimePicker2.Location = new System.Drawing.Point(16, 43);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 17;
             // 
             // save_btn
             // 
-            this.save_btn.Location = new System.Drawing.Point(394, 112);
+            this.save_btn.Location = new System.Drawing.Point(90, 99);
             this.save_btn.Margin = new System.Windows.Forms.Padding(2);
             this.save_btn.Name = "save_btn";
             this.save_btn.Size = new System.Drawing.Size(81, 21);
@@ -182,18 +186,18 @@
             // 
             // new_btn
             // 
-            this.new_btn.Location = new System.Drawing.Point(479, 114);
+            this.new_btn.Location = new System.Drawing.Point(5, 99);
             this.new_btn.Margin = new System.Windows.Forms.Padding(2);
             this.new_btn.Name = "new_btn";
             this.new_btn.Size = new System.Drawing.Size(81, 21);
             this.new_btn.TabIndex = 19;
-            this.new_btn.Text = "New";
+            this.new_btn.Text = "Edit";
             this.new_btn.UseVisualStyleBackColor = true;
             this.new_btn.Click += new System.EventHandler(this.new_btn_Click);
             // 
             // delete_btn
             // 
-            this.delete_btn.Location = new System.Drawing.Point(306, 112);
+            this.delete_btn.Location = new System.Drawing.Point(227, 101);
             this.delete_btn.Margin = new System.Windows.Forms.Padding(2);
             this.delete_btn.Name = "delete_btn";
             this.delete_btn.Size = new System.Drawing.Size(81, 21);
@@ -202,29 +206,52 @@
             this.delete_btn.UseVisualStyleBackColor = true;
             this.delete_btn.Click += new System.EventHandler(this.delete_btn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Location = new System.Drawing.Point(61, 5);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(414, 130);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "ExcelToDatabase";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.delete_btn);
+            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.save_btn);
+            this.groupBox2.Controls.Add(this.new_btn);
+            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Location = new System.Drawing.Point(481, 5);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(308, 130);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Database";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 536);
-            this.Controls.Add(this.delete_btn);
-            this.Controls.Add(this.new_btn);
-            this.Controls.Add(this.save_btn);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.firstRowNamesCheckBox);
             this.Controls.Add(this.Sheet);
             this.Controls.Add(this.sheetCombo);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,6 +275,8 @@
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.Button new_btn;
         private System.Windows.Forms.Button delete_btn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

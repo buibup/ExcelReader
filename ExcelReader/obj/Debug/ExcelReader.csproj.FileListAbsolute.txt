@@ -20,3 +20,14 @@ D:\Dev\2016\ExcelReader-master\ExcelReader\obj\Debug\ExcelReader.Form1.resources
 D:\Dev\2016\ExcelReader-master\ExcelReader\obj\Debug\ExcelReader.Properties.Resources.resources
 D:\Dev\2016\ExcelReader-master\ExcelReader\obj\Debug\ExcelReader.csproj.GenerateResource.Cache
 D:\Dev\2016\ExcelReader-master\ExcelReader\obj\Debug\ExcelReader.csprojResolveAssemblyReference.cache
+D:\github\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe.config
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.exe
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.pdb
+D:\github\ExcelReader\ExcelReader\bin\Debug\ExcelReader.exe
+D:\github\ExcelReader\ExcelReader\bin\Debug\ExcelReader.pdb
+D:\github\ExcelReader\ExcelReader\bin\Debug\Excel.dll
+D:\github\ExcelReader\ExcelReader\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csprojResolveAssemblyReference.cache
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.Form1.resources
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.Properties.Resources.resources
+D:\github\ExcelReader\ExcelReader\obj\Debug\ExcelReader.csproj.GenerateResource.Cache
